@@ -55,14 +55,15 @@ public class TicketService {
 		return searchResult;
 	}
 	
-	public List<Train> searchNearestTrains(String from){
+	public List<Train> searchNearestTrains(String from, int freeSeats){
 		List<Train> searchResult = new ArrayList<Train>();
 		
 		for(Train train: trains) {
 			Date currDate = new Date(System.currentTimeMillis());
 			Time currTime = new Time(currDate.getHours(), currDate.getMinutes());
 			if(train.getStationByLocation(from)!=null && 
-					train.getStationByLocation(from).getDispatchTime().compareTo(currTime)>0) {
+					train.getStationByLocation(from).getDispatchTime().compareTo(currTime)>0 &&
+					freeSeats<train.getFreeSeats()) {
 				searchResult.add(train);
 			}
 				

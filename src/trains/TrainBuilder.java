@@ -6,10 +6,12 @@ import java.util.List;
 public class TrainBuilder {
 	private List<Station> stations;
 	private int number;
+	private int freeSeats;
 	
 	public TrainBuilder() {
 		stations = new ArrayList<Station>();
 		number=0;
+		freeSeats=0;
 	}
 
 	public List<Station> getStations() {
@@ -36,12 +38,21 @@ public class TrainBuilder {
 		stations.add(new Station(location, arriveTime, dispatchTime));
 	}
 	
+	public int getFreeSeats() {
+		return freeSeats;
+	}
+
+	public void setFreeSeats(int freeSeats) {
+		this.freeSeats = freeSeats;
+	}
+
 	public Train build() {
-		return new Train(number, new ArrayList<Station>(stations));
+		return new Train(number, new ArrayList<Station>(stations), freeSeats);
 	}
 	
 	public void clear() {
 		stations = new ArrayList<Station>();
 		number=0;
+		freeSeats=0;
 	}
 }

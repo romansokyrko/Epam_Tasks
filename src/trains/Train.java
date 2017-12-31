@@ -7,10 +7,12 @@ public class Train {
 	
 	private List<Station> stations;
 	private int number;
+	private int freeSeats;
 
-	public Train(int number, List<Station> stations) {
+	public Train(int number, List<Station> stations, int freeSeats) {
 		this.number = number;
 		this.stations = stations;
+		this.freeSeats = freeSeats;
 	}
 
 	public List<Station> getStations() {
@@ -24,6 +26,14 @@ public class Train {
 			}
 		}
 		return null;
+	}
+	
+	public int getFreeSeats() {
+		return freeSeats;
+	}
+	
+	public int getNumber() {
+		return number;
 	}
 
 	@Override
