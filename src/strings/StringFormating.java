@@ -20,7 +20,7 @@ public class StringFormating {
 		}
 		in.close();
 		
-		// TODO: Доробити умови і розбити на методи
+		// TODO: split into methods, finish testing
 		List<String> lines = new ArrayList<String>();
 		int beginIndx=0;
 		int endIndx=lineSize-1;
