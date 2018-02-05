@@ -1,0 +1,8 @@
+DELIMITER //
+CREATE FUNCTION min_experience() RETURNS DECIMAL (10, 1)
+BEGIN 
+	RETURN (SELECT MIN(experience) FROM employee);
+END//
+DELIMITER ;
+
+DROP FUNCTION min_experience;

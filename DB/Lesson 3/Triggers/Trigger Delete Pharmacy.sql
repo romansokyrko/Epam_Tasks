@@ -1,0 +1,13 @@
+DELIMITER //
+CREATE TRIGGER DeletePharmacy
+AFTER DELETE
+ON pharmacy FOR EACH ROW
+BEGIN
+IF (SELECT COUNT(*) FROM employee WHERE pharmacy_id=old.id)>0
+THEN SIGNAL SQLSTATE  '45000'
+	SET MESSAGE_TEXT = 'Can`t delete pharmacy_id';
+END IF;
+END //
+DELIMITER ;
+
+DROP  TRIGGER DeletePharmacy;
