@@ -1,23 +1,22 @@
 package trains;
 
-public class Station implements Comparable<Station>{
+public class Station implements Comparable<Station> {
 
 	private String location;
 	private Time dispatchTime;
 	private Time arriveTime;
-	
+
 	public Station(String location, Time arriveTime, Time dispatchTime) {
 		this.location = location;
 		this.dispatchTime = dispatchTime;
 		this.arriveTime = arriveTime;
 	}
-	
+
 	@Override
 	public int compareTo(Station o) {
 		return dispatchTime.compareTo(o.dispatchTime);
 	}
 
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -36,13 +35,9 @@ public class Station implements Comparable<Station>{
 		return true;
 	}
 
-
-
-
 	public String getLocation() {
 		return location;
 	}
-
 
 	public Time getDispatchTime() {
 		return dispatchTime;
