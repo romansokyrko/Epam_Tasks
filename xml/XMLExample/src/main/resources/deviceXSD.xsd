@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE xml>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.com" xmlns="http://www.example.com"
+	elementFormDefault="qualified">
+
+	<xs:element name='devices'>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name='device' type='deviceType' minOccurs='0'
+					maxOccurs='unbounded' />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="deviceType">
+		<xs:all>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="origin" type="xs:string" />
+			<xs:element name="price">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="type">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="group" type="xs:string" />
+						<xs:element name="peripheral" type="xs:boolean" />
+						<xs:element name="energyConsumption" type="xs:integer" />
+						<xs:element name="port" type="xs:string" minOccurs="0" />
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+		<xs:attribute name='critical' type='xs:boolean' />
+	</xs:complexType>
+</xs:schema>
